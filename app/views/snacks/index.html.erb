@@ -16,7 +16,7 @@
     <% @snacks.each do |snack| %>
       <tr>
         <td><%= link_to snack.name, edit_snack_path(snack) %></td>
-        <td><%= snack.remaining_days %> (of 10)</td>
+        <td><%= snack.remaining_days %> (of <%= snack.restock_frequency_days %>)</td>
         <td><%= snack.calories %></td>
         <td><%= snack.description %></td>
       </tr>

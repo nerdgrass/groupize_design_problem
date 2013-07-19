@@ -6,9 +6,10 @@ class SnacksController < ApplicationController
 
   def create
     @snack = Snack.new(params[:snack])
-    if @snack.save?
+    @snack.last_restock_date = 1.day.ago
+    if @snack.save!
       flash[:notice] = "Thanks for suggesting!"
-      redirect_to snack_path
+      redirect_to snacks_path
     else
       flash[:error] = "Problems. We can't get that snack"
       render :new
@@ -21,6 +22,17 @@ class SnacksController < ApplicationController
 
   def edit
     @snack = Snack.find(params[:id])
+  end
+
+  def update
+    @snack = Snack.find(params[:id])
+    if @snack.save!
+      flash[:notice] = "Thanks for suggesting!"
+      redirect_to snacks_path
+    else
+      flash[:error] = "Problems. We can't get that snack"
+      render :new
+    end
   end
 
 end
