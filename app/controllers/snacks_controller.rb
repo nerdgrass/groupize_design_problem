@@ -6,7 +6,7 @@ class SnacksController < ApplicationController
 
   def create
     @snack = Snack.new(params[:snack])
-    if @snack.save?
+    if @snack.save
       flash[:notice] = "Thanks for suggesting!"
       redirect_to snack_path
     else

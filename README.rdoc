@@ -26,7 +26,11 @@ To set up this application, follow these steps:
 3. Cd into the directory containig the application
 4. Install the gems
    <tt>bundle install</tt>
-5. Start the application
+5. Create your database
+   <tt>rake db:create</tt>
+6. Migrate your database
+   <tt>rake db:migrate</tt>
+7. Start the application
    <tt>rails s</tt>
 
 When you're done, let us know and we'll take a look at the fork.
