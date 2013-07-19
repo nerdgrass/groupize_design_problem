@@ -1,0 +1,25 @@
+<h1>Kitchen Snack Central</h1>
+<p>These are the snacks we keep in the company kitchen. Enjoy!</p>
+<span>Don't see anything you like?</span>
+<%= link_to "Request a New Snack", new_snack_path %>
+
+<table>
+  <thead>
+    <th>
+      <td></td>
+      <td>Time to next refill</td>
+      <td>Calories</td>
+      <td>About</td>
+    </th>
+  </thead>
+  <tbody>
+    <% @snacks.each do |snack| %>
+      <tr>
+        <td><%= link_to snack.name, edit_snack_path(snack) %></td>
+        <td><%= snack.remaining_days %> (of 10)</td>
+        <td><%= snack.calories %></td>
+        <td><%= snack.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
