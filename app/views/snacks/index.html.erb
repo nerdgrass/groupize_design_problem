@@ -21,7 +21,7 @@
       <tbody>
         <% @snacks.each do |snack| %>
           <tr>
-            <td><%= link_to snack.name, edit_snack_path(snack) %></td>
+            <td><%= link_to snack.name, edit_snack_path(snack), :"data-reveal-id" => "editSnackModal"%></td>
             <td><%= snack.remaining_days %> (of <%= snack.restock_frequency_days %>)</td>
             <td><%= snack.calories %></td>
             <td><%= snack.description %></td>
