@@ -14,7 +14,10 @@
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
+
+// Zurb Foundation Initialization
 $(function(){ $(document).foundation(); });
+
 // Zurb Responsive Tables JS. Credit to: http://zurb.com/playground/responsive-tables
 $(document).ready(function() {
   var switched = false;
@@ -33,6 +36,7 @@ $(document).ready(function() {
       });
     }
   };
+
   $(window).load(updateTables);
   $(window).on("redraw",function(){switched=false;updateTables();}); // An event to listen for
   $(window).on("resize", updateTables);
@@ -79,5 +83,5 @@ $(document).ready(function() {
       $(this).height(heights[index]);
     });
   }
-
+  
 });

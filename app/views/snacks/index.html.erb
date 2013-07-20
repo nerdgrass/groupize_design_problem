@@ -4,9 +4,11 @@
   <div class="small-12 columns">
     <h1>Kitchen Snack Central</h1>
     <p>These are the snacks we keep in the company kitchen. Enjoy!</p>
-    <span>Don't see anything you like?</span>
-    <%= link_to "Request a New Snack", new_snack_path %>
+    <p>Don't see anything you like?</p>
+    <%= link_to "Request a New Snack", new_snack_path, :class => "button", :"data-reveal-id" => "requestSnackModal" %>
+
     <hr>
+
     <table class="responsive">
       <thead>
         <tr>
@@ -27,5 +29,6 @@
         <% end %>
       </tbody>
     </table>
+
   </div>
 </div>
