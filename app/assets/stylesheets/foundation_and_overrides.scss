@@ -297,10 +297,10 @@ $form-label-font-color: white;
 // $input-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
 // $input-font-size: emCalc(14);
-$input-bg-color: lighten($green, 20%);
+$input-bg-color: lighten($green, 25%);
 $input-focus-bg-color: lighten($green, 40%);
-$input-border-color: $green;
-$input-focus-border-color: lighten($green, 10%);
+$input-border-color: darken($green, 5%);
+$input-focus-border-color: lighten($green, 20%);
 // $input-border-style: solid;
 // $input-border-width: 1px;
 // $input-disabled-bg: #ddd;
@@ -1193,7 +1193,7 @@ $table-head-padding: emCalc(15, 16, 15);
 // These are for controlling the display and margin of tables
 
 // $table-display: table-cell;
-// $table-margin-bottom: emCalc(20);
+$table-margin-bottom: 0;
 
 //
 // Image Thumbnail Variables
@@ -1312,6 +1312,11 @@ $tooltip-font-color: lighten($green, 20%);
 .button {
   -webkit-box-shadow: none !important;
   box-shadow:none !important;
+}
+.reveal-modal {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
 
 @import 'foundation';

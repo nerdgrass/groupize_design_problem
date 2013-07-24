@@ -2,45 +2,45 @@
                             
 /* TEAM */
 
+Alex Boerstler
                             
-Your title: Your name.
-
-                            
-Site: email, link to a contact form, etc.
-
-                            
-Twitter: your Twitter username.
-
-                            
-Location: City, Country.
-
+Your title: Potential UI/UX Designer
+                      
+Site: www.arboerstler.carbonmade.com
                          
-                 
-                        [...]
-						
+Twitter: nerdgrass.
+            
+Location: Medford, MA.
+
+
+Catherine Powell
+                            
+Your title: VP of Engineering
+                      
+Site: www.groupize.com
+                         
+Twitter: 
+            
+Location: 
 
 							
 /* THANKS */
 
-							
-Name: name or url
-
-						
-                 
-                        [...]
+ZURB Responsive Tables
+http://zurb.com/article/982/a-new-take-on-responsive-tables
                         
 
                             
 /* SITE */
 
                             
-Last update: YYYY/MM/DD 
+Last update: 2013/July
 
                             
-Standards: HTML5, CSS3,..
+Standards: HTML5, CSS3
 
                             
-Components: Modernizr, jQuery, etc.
+Components: RoR, Simple Form, Foundation 4 by ZURB
 
                             
-Software: Software used for the development
+Software: Sublime Text 2, Terminal
