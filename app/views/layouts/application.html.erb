@@ -13,7 +13,7 @@
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  	<title><%= content_for?(:title) ? yield(:title) : "Groupize Office Snack Tracker Extraordinaire" %></title>
 
     <link rel="author" href="humans.txt" />
 
@@ -31,21 +31,7 @@
     
     <%= javascript_include_tag "application" %>
 
-    <!-- Request Snack Modal -->
-    <div id="requestSnackModal" class="reveal-modal medium">
-      <h1>Request a New Snack</h1>
-      <p>We can't promise we'll get it, but suggest a snack and we'll do our best!</p>
-      <p>Sincerely,</p>
-      <p>Your Admin Team</p>
-      <%= render partial: 'form', locals: { include_date: false } %>
-      <a class="close-reveal-modal">&#215;</a>
-    </div>
-    <!-- Edit Snack Modal -->
-    <div id="editSnackModal" class="reveal-modal medium">
-    <h1>Change the Snack</h1>
-    <p>Update the last purchase date or change info about the snack</p>
-    <%= render partial: 'form', locals: { include_date: true } %>
-    <a class="close-reveal-modal">&#215;</a>
+    <%= render "layouts/modals" %>
   </div>
   </body>
 </html>

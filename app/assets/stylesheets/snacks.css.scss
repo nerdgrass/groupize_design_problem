@@ -1,8 +1,8 @@
-// Place all the styles related to the SnacksController controller here.
+// Place all the styles related to the SnacksController here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//emCalc apparently has to be defined in every SCSS file when being used in rails? That's a bummer.
+//Rails has a funky way of dealing with SASS.
 
 		// Since the typical default browser font-size is 16px, that makes the calculation for grid size.
 		// If you want your base font-size to be a different size and not have it effect grid size too,
