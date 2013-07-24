@@ -1,0 +1,10 @@
+<%= simple_form_for @snack do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :calories %>
+  <% if include_date %>
+    <%= f.input :last_restock_date, label: 'Date You Last Purchased This Snack' %>
+  <% end %>
+  <%= f.input :restock_frequency_days, label: 'Restock Frequency (days)' %>
+  <%= f.button :submit %>
+<% end %>

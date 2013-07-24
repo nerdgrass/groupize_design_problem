@@ -11,9 +11,11 @@
   	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
 
   	<!-- Set the viewport width to device width for mobile -->
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
 
   	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+    <link rel="author" href="humans.txt" />
 
   	<%= stylesheet_link_tag    "application" %>
     <link href='http://fonts.googleapis.com/css?family=Molengo' rel='stylesheet' type='text/css'>
@@ -25,6 +27,7 @@
 
     <%= yield %>
 
+    <%= render "layouts/footer" %>
     
     <%= javascript_include_tag "application" %>
 

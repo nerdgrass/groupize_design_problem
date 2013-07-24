@@ -2,10 +2,148 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//emCalc apparently has to be defined in every SCSS file when being used in rails? That's a bummer.
+
+		// Since the typical default browser font-size is 16px, that makes the calculation for grid size.
+		// If you want your base font-size to be a different size and not have it effect grid size too,
+		// set the value of $em-base to $base-font-size ($em-base: $base-font-size;)
+		$em-base: 16 !default;
+
+		// It strips the unit of measure and returns it
+		@function strip-unit($num) {
+		  @return $num / ($num * 0 + 1);
+		}
+
+		// Converts "px" to "em" using the ($)em-base
+		@function convert-to-em($value)  {
+		  $value: strip-unit($value) / strip-unit($em-base) * 1em;
+		  @if ($value == 0em) { $value: 0; } // Turn 0em into 0
+		  @return $value;
+		}
+
+		// Working in ems is annoying. Think in pixels by using this handy function, emCalc(#)
+		// Just enter the number, no need to mention "px"
+		@function emCalc($values...) {
+		  $max: length($values); // Get the total number of parameters passed
+
+		  // If there is only 1 parameter, then return it as an integer.
+		  // This is done because a list can't be multiplied or divided even if it contains a single value
+		  @if $max == 1 { @return convert-to-em(nth($values, 1)); }
+
+		  $emValues: (); // This will eventually store the converted $values in a list
+		  @for $i from 1 through $max {
+		    $emValues: append($emValues, convert-to-em(nth($values, $i)));
+		  }
+		  @return $emValues;
+		}
+
+// Variables, because rails handles global variables in a funky way.
+$green:#94c04b;
+$gray:#333433;
+
+// Kitchen Snacks App Styles
+.fullWidthRow {
+	min-width:100vw;
+}
 div.card {
-	background:white;
+	background:lighten($gray, 90%);
 	margin-top:2.5em;
 	padding:1em;
+	box-shadow:0 1px 2px #aaa;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+h1,button,.button {
+	text-transform: uppercase;
+	letter-spacing: emCalc(1px);
+}
+//Footer Styles
+.footer {
+	background:$green;
+	margin-top:2em;
+	color:darken($green, 30%);
+} 
+.footerContent {
+	padding:1em 0;
+}.footerContent a {
+	color:lighten($green, 25%);
+	font-size: emCalc(24px);
+	font-weight: 300;
+}.footerContent a:hover {
+	color:darken($green, 15%);
+}.footerContent img {
+	float:right;
+}.footerContent > div {
+	margin-top: emCalc(20px);
+}.footerContent > div:last-child {
+	margin-top: 0;
+}.footerContent > div:nth-child(even) {
+	text-align: center;
+}
+// SnackForm
+form.snackForm {
+	background:darken($green, 5%);
+	padding: emCalc(15px);
+	border: 1px solid $green;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.snackForm label {
+	color:white;
+} 
+.snackForm input, .snackForm textarea {
+	padding:emCalc(20px);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.snackForm input.button {
+	background: lighten($green, 40%);
+	color:darken($green, 15%);
+	border: 2px solid $green;
+}.snackForm input.button:hover {
+	background: lighten($green, 30%);
+	color:darken($green, 20%);
+}.snackForm input.button:active {
+	position: relative;
+    top: 1px;
+    right:1px;
+}
+// Snacks Table
+th.snackTable {
+	font-family:"Molengo", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	text-transform:uppercase;
+	text-align:center;
+	min-width:10em;
+	height: emCalc(65px);
+	font-size: emCalc(16px);
+	letter-spacing: emCalc(1px);
+}th.snackTable:first-child {
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}th.snackTable:last-child {
+	-webkit-border-top-right-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-moz-border-radius-topright: 5px;
+	-moz-border-radius-bottomright: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+th.snackTable, td.snackTable {text-align:center;}
+th.snackTable:last-child, td.snackTable:last-child, td.snackTable:first-child {text-align:left;}
+td.snackTable {
+	height:emCalc(60px);
+	color:lighten($gray, 20%);
+	font-size: emCalc(14px);
+	line-height: emCalc(22px);
+}td.snackTable:first-child, td.snackTable:last-child {
+	padding-left: emCalc(20px);
 }
 
 // Zurb Responsive Tables CSS. Credit to: http://zurb.com/playground/responsive-tables
@@ -28,4 +166,13 @@ table td, table th { padding: 9px 10px; text-align: left; }
 
 	table.responsive td, table.responsive th { position: relative; white-space: nowrap; overflow: hidden; }
 	table.responsive th:first-child, table.responsive td:first-child, table.responsive td:first-child, table.responsive.pinned td { display: none; }
+
+	th.snackTable {
+		font-size: emCalc(12px);
+	}
+}
+
+// Overrides to Zurb Responsive Tables CSS
+.responsive th, .responsive td {
+	max-width:50em;
 }

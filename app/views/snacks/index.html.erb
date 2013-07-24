@@ -3,32 +3,40 @@
 <div class="row card">
   <div class="small-12 columns">
     <h1>Kitchen Snack Central</h1>
+  </div>
+  <div class="small-12 large-6 columns">
     <p>These are the snacks we keep in the company kitchen. Enjoy!</p>
+    
+  </div>
+  <div class="small-12 large-6 columns">
     <p>Don't see anything you like?</p>
     <%= link_to "Request a New Snack", new_snack_path, :class => "button", :"data-reveal-id" => "requestSnackModal" %>
-
-    <hr>
-
-    <table class="responsive">
-      <thead>
+  </div>
+  <hr>
+  <div class="show-for-small small-12 columns panel">
+    <p>Swipe right to see all of the table!</p>
+  </div>
+  
+  <table class="responsive snackTable">
+    <thead class="snackTable">
+      <tr>
+        <th class="snackTable">Snack Name</th>
+        <th class="snackTable"><span data-tooltip data-options="disable-for-touch:true" class="has-tip" title="Time until refill needed, measured in days">TTR</span></th>
+        <th class="snackTable"><span data-tooltip data-options="disable-for-touch:true" class="has-tip" title="Calories per serving of the snack">Calories</span></th>
+        <th class="snackTable">Description</th>
+      </tr>
+    </thead>
+    <tbody class="snackTable">
+      <% @snacks.each do |snack| %>
         <tr>
-          <th>Snack Name</th>
-          <th>Time to next refill</th>
-          <th>Calories</th>
-          <th>Description</th>
+          <td class="snackTable"><%= link_to snack.name, edit_snack_path(snack), :"data-reveal-id" => "editSnackModal"%></td>
+          <td class="snackTable"><%= snack.remaining_days %> (of <%= snack.restock_frequency_days %>)</td>
+          <td class="snackTable"><%= snack.calories %></td>
+          <td class="snackTable"><%= snack.description %></td>
         </tr>
-      </thead>
-      <tbody>
-        <% @snacks.each do |snack| %>
-          <tr>
-            <td><%= link_to snack.name, edit_snack_path(snack), :"data-reveal-id" => "editSnackModal"%></td>
-            <td><%= snack.remaining_days %> (of <%= snack.restock_frequency_days %>)</td>
-            <td><%= snack.calories %></td>
-            <td><%= snack.description %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+      <% end %>
+    </tbody>
+  </table>
 
   </div>
 </div>

@@ -1,10 +1,38 @@
-<%= simple_form_for @snack do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :calories %>
+<%= simple_form_for(@snack, html: { class: 'snackForm' }) do |f| %>
+
+  <div class="row">
+
+  	<div class="small-6 columns">
+  		<%= f.input :name, label: " Snack Name" %>
+  	</div>
+  </div>
+
+  <div class="row">
+  	<div class="small-12 columns">
+  		<%= f.input :description %>
+  	</div>
+  </div>
+  <div class="row">
+  	<div class="small-12 large-6 columns">
+  		<%= f.input :calories %>
+  	</div>
+  	<div class="small-12 large-6 columns">
+  		<%= f.input :restock_frequency_days, label: 'Restock Frequency (days)' %>
+  	</div>
+  </div>
+
   <% if include_date %>
-    <%= f.input :last_restock_date, label: 'Date You Last Purchased This Snack' %>
+    <div class="row">
+    	<div class="small-12 large-4 columns selectStyles">
+    		<%= f.input :last_restock_date, label: 'Date You Last Purchased This Snack' %>
+    	</div>
+    </div>
   <% end %>
-  <%= f.input :restock_frequency_days, label: 'Restock Frequency (days)' %>
-  <%= f.button :submit %>
+  
+  <div class="row">
+  	<div class="small-12 large-6 columns">
+  		<%= f.button :submit, :class => "button large expand" %>
+  	</div>
+  </div>
+
 <% end %>
